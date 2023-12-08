@@ -27,13 +27,84 @@ Node.js: Node.js is a JavaScript runtime built on the V8 JavaScript engine. It a
 - **Middleware:**
   - Middleware functions handle requests and responses in Express. They are executed between the app's request and the server's response. Example: `app.use(req, res, next)`.
 
+## MY First Node App :
+  we are going to code the very first basic node app <br/> we will learn how to create the server.
+  Certainly! To create a simple Node.js application, follow these steps:
+
+1. **Install Node.js:**
+   Make sure you have Node.js installed on your machine. You can download it from the official website: [Node.js](https://nodejs.org/).
+
+2. **Create a Project Directory:**
+   Open your terminal and create a new directory for your Node.js application. Navigate to the directory using the `cd` command.
+
+   ```bash
+   mkdir my-node-app
+   cd my-node-app
+   ```
+
+3. **Initialize a Node.js Project:**
+   Run the following command to initialize a new Node.js project. This will create a `package.json` file.
+
+   ```bash
+   npm init -y
+   ```
+
+4. **Create the Main File:**
+   Create a file named `app.js` (or any other name you prefer) in your project directory. This will be your main Node.js file.
+
+   ```javascript
+   // app.js
+
+   // Load the HTTP module to create an HTTP server.
+   const http = require('http');
+
+   // Configure HTTP server to respond with "Hello, World!" to all requests.
+   const server = http.createServer((req, res) => {
+     res.writeHead(200, { 'Content-Type': 'text/plain' });
+     res.end('Hello, World!\n');
+   });
+
+   // Listen on port 3000 and IP address 127.0.0.1.
+   const port = 3000;
+   const ip = '127.0.0.1';
+   server.listen(port, ip, () => {
+     console.log(`Server running at http://${ip}:${port}/`);
+   });
+   ```
+
+5. **Run Your Node.js App:**
+   In your terminal, run the following command to start your Node.js application:
+
+   ```bash
+   node app.js
+   ```
+
+   You should see the message "Server running at http://127.0.0.1:3000/".
+
+6. **Access Your App:**
+   Open a web browser and go to `http://127.0.0.1:3000/` or `http://localhost:3000/`. <br/>
+   Congratulations! You've just created a simple Node.js application. 
+
+
 ## Express.js Basics:
 
 - **Express.js:**
   - A framework that simplifies server-side features, providing easy access to functionalities similar to the http module in Node.js.
 
 - **Routing:**
-  - Define routes using the syntax `app.METHOD(PATH, HANDLER)`. Example: `app.get('/profile', getHandler)`.
+ Routing refers to determining how an application responds to a client request to a particular endpoint, which is a URI (or path) and a specific HTTP request method (GET, POST, and so on).
+
+Each route can have one or more handler functions, which are executed when the route is matched.
+
+Route definition takes the following structure:
+
+app.METHOD(PATH, HANDLER)
+Where:
+
+app is an instance of express.
+METHOD is an HTTP request method, in lowercase.
+PATH is a path on the server.
+HANDLER is the function executed when the route is matched.
 
 - **Dynamic Routing:**
   - Express supports dynamic routing using parameters. Example: `app.get('/profile/:username', getHandler)`, where `:username` is accessed using `req.params.username`.
