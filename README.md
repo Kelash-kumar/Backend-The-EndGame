@@ -177,7 +177,7 @@ As you become more familiar with Express, you can explore features like middlewa
 Middleware functions in Express have access to the request, response, and the next middleware function in the application’s request-response cycle. They can perform various tasks such as modifying request and response objects, ending the request-response cycle, or calling the next middleware in the stack.
 
 Here's an example of a simple middleware that logs the request method and URL:
-
+```
 javascript
 Copy code
 // Middleware function
@@ -188,7 +188,7 @@ const logMiddleware = (req, res, next) => {
 
 // Use the middleware in your Express app
 app.use(logMiddleware);
-
+```
 In this example, `app.use()` is used to apply the middleware globally to all routes. You can also apply middleware to specific routes using  `app.use('/specific-route', logMiddleware)`.
 
 ## 3 Template Engines in Express:
