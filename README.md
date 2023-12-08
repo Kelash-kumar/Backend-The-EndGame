@@ -669,9 +669,10 @@ app.use(flash());
      const successMessage = req.flash('success');
      ```
    ## USAGE:
-   ```javascript
+     ```javascript
+   import express from 'express';
    import session from 'express-session';
-import flash from 'express-flash-message';
+   import flash from 'express-flash-message';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
