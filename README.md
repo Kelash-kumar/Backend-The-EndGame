@@ -416,13 +416,13 @@ It seems like you've provided a mix of information related to setting up an Expr
 
 ### MongoDB Integration:
 <strong>Remember that :<strong/>
-```
+
  CODE SIDE   |    DATABASE SIDE |
 | ------------- | ------------- |
 | DB Setup  | DB Formation |
 | Model Creation  | Collection creation |
 | Schema creation | Documents |
-```
+
 
 1. **Install MongoDB:**
    Make sure you have MongoDB installed on your machine.
@@ -449,56 +449,53 @@ Sample Database Folder Structure:
 
 Place Mongoose models in this folder. Each model represents a collection in MongoDB.
 Example structure:
-lua
-Copy code
+```
 /models
   |-- user.js
   |-- post.js
   |-- comment.js
-schemas:
+```
+## Schemas:
 
 If you prefer, you can create a separate folder for Mongoose schemas to define the structure of your documents.
 Example structure:
-lua
-Copy code
+```
 /schemas
   |-- userSchema.js
   |-- postSchema.js
   |-- commentSchema.js
-connections:
+```
+## Connections:
 
 Store database connection setup files here. This is where you establish a connection to your database using Mongoose.
 Example structure:
-bash
-Copy code
+```
 /connections
   |-- db.js
-seeds:
-
+```
+## Seeds:
 If you have initial data or seed data for your database, you can place scripts or JSON files here.
 Example structure:
-bash
-Copy code
+```bash
+
 /seeds
   |-- initialData.js
 migrations:
-
+```
 If you're working with a relational database that requires migrations, consider having a folder for migration scripts.
 Example structure:
-lua
-Copy code
+```lua
 /migrations
   |-- 20230101000001_create_users_table.js
   |-- 20230101000002_add_columns_to_posts_table.js
 utils:
-
+```
 Place utility functions related to database operations in this folder.
 Example structure:
-bash
-Copy code
+```bash
 /utils
   |-- dbUtils.js
-     
+   ```  
 
 ### Sessions:
  Sessions allow you to store user-specific information on the server between requests. It helps maintain state and user data throughout their interaction with the application.
