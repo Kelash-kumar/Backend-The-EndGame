@@ -2,10 +2,10 @@
 ---
 ## Node.js and Express.js EndGame
 
-## Node.js Basics:
+### Node.js Basics:
 #Node.js Basics:
 Node.js: Node.js is a JavaScript runtime built on the V8 JavaScript engine. It allows developers to execute JavaScript code outside of a web browser, enabling server-side development.
-## Key Features:
+### Key Features:
 -Asynchronous and event-driven.<br/>
 -Single-threaded, non-blocking I/O operations.<br/>
 -Ideal for building scalable network applications.
@@ -26,7 +26,7 @@ Node.js: Node.js is a JavaScript runtime built on the V8 JavaScript engine. It a
 
 - **Middleware:**
   - Middleware functions handle requests and responses in Express. They are executed between the app's request and the server's response. Example: `app.use(req, res, next)`.
-  - <h2>follow the link to know more about middleware <h2/>
+  - <h5>follow the link to know more about middleware <h5/>
 
 ## MY First Node App :
   we are going to code the very first basic node app <br/> we will learn how to create the server.
@@ -89,10 +89,10 @@ Node.js: Node.js is a JavaScript runtime built on the V8 JavaScript engine. It a
 
 ## Express.js Basics:
 
-###  **Express.js:**
+## 1  **Express.js:**
   - A framework that simplifies server-side features, providing easy access to functionalities similar to the http module in Node.js.
 
-### **Routing:**
+## 2 **Routing:**
  Routing refers to determining how an application responds to a client request to a particular endpoint, which is a URI (or path) and a specific HTTP request method (GET, POST, and so on).
 
 Each route can have one or more handler functions, which are executed when the route is matched.
@@ -110,7 +110,7 @@ HANDLER is the function executed when the route is matched.
 - **Dynamic Routing:**
   - Express supports dynamic routing using parameters. Example: `app.get('/profile/:username', getHandler)`, where `:username` is accessed using `req.params.username`.
 
-## MY First Express App:
+### MY First Express App:
 Now we use the express fram work to create the `server` which we did with `HTTP` in node js app but ultimatly! express use the http module to create the serve on backend. 
 
  ## Below are the steps to create a simple Node.js application using Express:
@@ -187,7 +187,7 @@ const logMiddleware = (req, res, next) => {
 app.use(logMiddleware);
 In this example, app.use() is used to apply the middleware globally to all routes. You can also apply middleware to specific routes using app.use('/specific-route', logMiddleware).
 
-### Template Engines in Express:
+## 3 Template Engines in Express:
 Template engines allow you to generate HTML dynamically by embedding values into the HTML. Popular template engines for Express include EJS, Handlebars, Pug, and Mustache. Here's an example using the EJS template engine:
 ## EJS Setup:
 EJS (Embedded JavaScript) is a template engine for Express.js that allows you to generate dynamic HTML pages.
@@ -202,20 +202,56 @@ creating the ejs files with `.ejs` extension.
   4. Create EJS files inside the "views" folder.
   5. Use the `render` function to render the EJS files. Reference files within the "views" folder, omitting the ".ejs" extension.
 
-### Static Files:
+###  First, install the EJS package:
 
+bash
+Copy code
+npm install ejs
+Then, configure Express to use EJS:
+
+javascript
+Copy code
+// Set the view engine to EJS
+app.set('view engine', 'ejs');
+
+// Render a dynamic view
+app.get('/dynamic', (req, res) => {
+  const data = { message: 'Hello, Dynamic World!' };
+  res.render('dynamic', data);
+});
+
+Create a file named dynamic.ejs in a folder named views :
+<br/> file location be like`views/dynamics.ejs`.
+
+html
+Copy code
+<!-- views/dynamic.ejs -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dynamic Page</title>
+</head>
+<body>
+  <h1><%= message %></h1>
+</body>
+</html>
+
+## 4 Static Files:
 - Static files, such as stylesheets, frontend JavaScript, and images, can be served using Express.js.
   - Place images in `public/images`.
   - Stylesheets in `public/stylesheets`.
   - JavaScript files in `public/javascripts`.
+  <strong>Example:<strong/>if we want to add css `dynamic.css` file in our above `dynamic.ejs` file then we create our css file in `public/stylesheets` directory and call this file in above `dynamic.ejs` file , same as we use css in out html file.
 
- ### Error Handling:
+ ## 5 Error Handling:
 
 - Error handling is crucial for building robust applications. Implement appropriate error-handling mechanisms in your Express.js app.
 
 Error handling is a crucial aspect of writing robust and reliable Node.js backend applications. Here's a guide on error handling in Node.js:
 
-## 1. **Try-Catch Blocks:**
+### 1. **Try-Catch Blocks:**
    - Use try-catch blocks to handle synchronous errors within your code.
    - Example:
 
@@ -228,7 +264,7 @@ Error handling is a crucial aspect of writing robust and reliable Node.js backen
      }
      ```
 
-## 2. **Promises:**
+### 2. **Promises:**
    - For asynchronous code, use promises and handle errors in the `catch` block.
    - Example:
 
@@ -243,7 +279,7 @@ Error handling is a crucial aspect of writing robust and reliable Node.js backen
        });
      ```
 
-## 3. **Async/Await:**
+### 3. **Async/Await:**
    - With async/await syntax, you can handle asynchronous errors in a more synchronous-looking way.
    - Example:
 
@@ -261,7 +297,7 @@ Error handling is a crucial aspect of writing robust and reliable Node.js backen
      fetchData();
      ```
 
-## 4. **Event Emitters:**
+### 4. **Event Emitters:**
    - Utilize event emitters for handling errors in certain scenarios.
    - Example:
 
@@ -277,7 +313,7 @@ Error handling is a crucial aspect of writing robust and reliable Node.js backen
      emitter.emit('error', new Error('An example error'));
      ```
 
-## 5. **Express.js Error Handling:**
+### 5. **Express.js Error Handling:**
    - In an Express.js application, you can use middleware to handle errors.
    - Example:
 
@@ -294,7 +330,7 @@ Error handling is a crucial aspect of writing robust and reliable Node.js backen
      });
      ```
 
-## 6. **Custom Error Classes:**
+### 6. **Custom Error Classes:**
    - Create custom error classes to distinguish different types of errors and handle them accordingly.
    - Example:
 
@@ -317,7 +353,7 @@ Error handling is a crucial aspect of writing robust and reliable Node.js backen
      }
      ```
 
-## 7. **Logging:**
+### 7. **Logging:**
    - Always log errors to help with debugging and monitoring.
    - Example:
 
