@@ -177,9 +177,8 @@ As you become more familiar with Express, you can explore features like middlewa
 Middleware functions in Express have access to the request, response, and the next middleware function in the application’s request-response cycle. They can perform various tasks such as modifying request and response objects, ending the request-response cycle, or calling the next middleware in the stack.
 
 Here's an example of a simple middleware that logs the request method and URL:
-```
-javascript
-Copy code
+```javascript
+
 // Middleware function
 const logMiddleware = (req, res, next) => {
   console.log(`[${new Date().toLocaleString()}] ${req.method} ${req.url}`);
