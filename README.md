@@ -107,6 +107,20 @@ METHOD is an HTTP request method, in lowercase.
 PATH is a path on the server.
 HANDLER is the function executed when the route is matched.
 
+Respond with `Hello Expresss App!` on the homepage:
+```javascript
+app.get('/', (req, res) => {
+  res.send('Hello Express App!')
+})
+```
+```javascript
+Respond to POST request on the root route (/), the application’s home page:
+
+app.post('/', (req, res) => {
+  res.send('Got a POST request')
+})
+```
+
 - **Static Routing:**
   - Express supports Static routing using parameters. Example: `app.get('/profile/username', getHandler)`. it wil give us all the user' name.
 
@@ -226,9 +240,7 @@ app.get('/dynamic', (req, res) => {
 Create a file named dynamic.ejs in a folder named views :
 <br/> file location be like`views/dynamics.ejs`.
 ```html
-html
-Copy code
-<!-- views/dynamic.ejs -->
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
