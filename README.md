@@ -180,16 +180,16 @@ Here's an example of a simple middleware that logs the request method and URL:
 
 javascript
 Copy code
- Middleware function
+// Middleware function
 const logMiddleware = (req, res, next) => {
   console.log(`[${new Date().toLocaleString()}] ${req.method} ${req.url}`);
-  next();  Call the next middleware in the stack
+  next(); // Call the next middleware in the stack
 };
 
- Use the middleware in your Express app
+// Use the middleware in your Express app
 app.use(logMiddleware);
 
-In this example, `app.use()` is used to apply the middleware globally to all routes. You can also apply middleware to specific routes using `app.use('/specific-route', logMiddleware)`.
+In this example, `app.use()` is used to apply the middleware globally to all routes. You can also apply middleware to specific routes using  `app.use('/specific-route', logMiddleware)`.
 
 ## 3 Template Engines in Express:
 Template engines allow you to generate HTML dynamically by embedding values into the HTML. Popular template engines for Express include EJS, Handlebars, Pug, and Mustache. Here's an example using the EJS template engine:
