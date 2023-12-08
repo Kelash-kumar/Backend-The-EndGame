@@ -107,8 +107,11 @@ METHOD is an HTTP request method, in lowercase.
 PATH is a path on the server.
 HANDLER is the function executed when the route is matched.
 
+- **Static Routing:**
+  - Express supports Static routing using parameters. Example: `app.get('/profile/username', getHandler)`. it wil give us all the user' name.
+
 - **Dynamic Routing:**
-  - Express supports dynamic routing using parameters. Example: `app.get('/profile/:username', getHandler)`, where `:username` is accessed using `req.params.username`.
+  - Express supports dynamic routing using parameters. Example: `app.get('/profile/:username', getHandler)`, where `:username` is accessed using `req.params.username`.It use to find the particular user information/data.
 
 ### MY First Express App:
 Now we use the express fram work to create the `server` which we did with `HTTP` in node js app but ultimatly! express use the http module to create the serve on backend. 
@@ -177,15 +180,16 @@ Here's an example of a simple middleware that logs the request method and URL:
 
 javascript
 Copy code
-// Middleware function
+ Middleware function
 const logMiddleware = (req, res, next) => {
   console.log(`[${new Date().toLocaleString()}] ${req.method} ${req.url}`);
-  next(); // Call the next middleware in the stack
+  next();  Call the next middleware in the stack
 };
 
-// Use the middleware in your Express app
+ Use the middleware in your Express app
 app.use(logMiddleware);
-In this example, app.use() is used to apply the middleware globally to all routes. You can also apply middleware to specific routes using app.use('/specific-route', logMiddleware).
+
+In this example, `app.use()` is used to apply the middleware globally to all routes. You can also apply middleware to specific routes using `app.use('/specific-route', logMiddleware)`.
 
 ## 3 Template Engines in Express:
 Template engines allow you to generate HTML dynamically by embedding values into the HTML. Popular template engines for Express include EJS, Handlebars, Pug, and Mustache. Here's an example using the EJS template engine:
