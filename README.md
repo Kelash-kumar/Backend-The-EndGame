@@ -415,7 +415,7 @@ It seems like you've provided a mix of information related to setting up an Expr
    ```
 
 ### MongoDB Integration:
-dotnev npm package can be used to provide environment variables
+- dotnev npm package can be used to provide environment variables
 ```
 $ npm i dotenv
 ```
@@ -438,33 +438,34 @@ $ npm i dotenv
      mongoose.connect('mongodb://localhost:27017/dbname', { useNewUrlParser: true, useUnifiedTopology: true });
      ```
 3. **Define a schema**
-Let’s create a schema for a new collection.
+- Let’s create a schema for a new collection.
 
-Schema defines the structure of the document, with all the field names and type.
-
+- Schema defines the structure of the document, with all the field names and type.
+```javascript
 const studentSchema = new mongoose.Schema({
     roll_no: Number,
     name: String,
     year: Number,
     subjects: [String]
 });
+```
 ``mongoose.schema() ``takes in a javascript object.
 
-Name of the property is the fields for the document
-Value for the property represents the type for the particular field.
+- Name of the property is the fields for the document
+- Value for the property represents the type for the particular field.
 
-To make any field required, make required as true.
+- To make any field required, make required as true.
 ```
 roll_no: {
     type: Number,
     required: true
 }
 ```
-Since we wanted to specify that it is required i.e. to send another information along with the type of the field, we represent the values that are to be sent in an object.
+- Since we wanted to specify that it is required i.e. to send another information along with the type of the field, we represent the values that are to be sent in an object.
 
 
-3. Define the model
-Let’s create our model by passing in the schema and a name for our model.
+3. **Define the model**
+- Let’s create our model by passing in the schema and a name for our model.
 ```
 const Student = mongoose.model('Student', studentSchema);
 
