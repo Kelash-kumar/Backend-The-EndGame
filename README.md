@@ -6,8 +6,8 @@
 #Node.js Basics:
 Node.js: Node.js is a JavaScript runtime built on the V8 JavaScript engine. It allows developers to execute JavaScript code outside of a web browser, enabling server-side development.
 ## Key Features:
--Asynchronous and event-driven.
--Single-threaded, non-blocking I/O operations.
+-Asynchronous and event-driven.\n
+-Single-threaded, non-blocking I/O operations.\n
 -Ideal for building scalable network applications.
 - **npm (Node Package Manager):**
   - The package manager that provides a wide range of packages for the Node.js ecosystem.
