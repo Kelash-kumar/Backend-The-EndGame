@@ -225,7 +225,7 @@ app.get('/dynamic', (req, res) => {
 
 Create a file named dynamic.ejs in a folder named views :
 <br/> file location be like`views/dynamics.ejs`.
-
+```html
 html
 Copy code
 <!-- views/dynamic.ejs -->
@@ -240,7 +240,7 @@ Copy code
   <h1><%= message %></h1>
 </body>
 </html>
-
+```
 ## 4 Static Files:
 - Static files, such as stylesheets, frontend JavaScript, and images, can be served using Express.js.
   - Place images in `public/images`.
