@@ -241,3 +241,29 @@ app.use(flash());
      const successMessage = req.flash('success');
      ```
 
+◽ Authentication and Authorization: 
+Explore the world of user authentication and authorization. 
+We'll show you how to secure your applications and control access to different parts of your projects.
+- passport is like a box which already all passport setup like login ,register.
+but it doesn't have any strategy of passport.
+- strategy is like method of registration it could be Local,google eand github etc
+-  to doing so we installed some packages like:
+ local starategy: 
+1 passport
+2 passport-local
+3 passport-local-mongoose:it provide us the encryption 
+   -serailiezed and deserielizes user
+4 and express session;
+````
+SETPS TO SETPUP:
+---------------------------->
+install these package:
+1 --npm i passport passport-local passport-local-mongoose mongoose express-session
+2 -- now create app.js file and write the above b/w the view-engine and logger.
+3 -- setup users.js properly
+4 --in index.js try register first and then codes as well  
+database setup:
+username :kelashraisal
+passwprd:N6ZzWxxsk09IQLjO
+Connection_url:mongodb+srv://kelashraisal:N6ZzWxxsk09IQLjO@cluster0.cxnieoz.mongodb.net/kelashraisal
+

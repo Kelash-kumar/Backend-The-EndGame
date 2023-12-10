@@ -1,3 +1,17 @@
 const mongoose = require('mongoose');
+const passportLocalMongoose = require('passport-local-mongoose');
+const connect_url='mongodb+srv://kelashraisal:N6ZzWxxsk09IQLjO@cluster0.cxnieoz.mongodb.net/kelashraisal';
+// const connect ='mongodb+srv://kelashraisal:N6ZzWxxsk09IQLjO@cluster0.cxnieoz.mongodb.net/userdb?retryWrites=true&w=majority'
+mongoose.connect(connect_url);
 
-mongoose.connect('mongodb://localhost:27017/', {useNewUrlParser: true, useUnifiedTopology: true})
+
+
+const userSchema = new mongoose.Schema({
+  username: String,
+  password: String,
+  secret: String,
+});
+
+userSchema.plugin(passportLocalMongoose);
+const User = mongoose.model('User', userSchema);
+module.exports = User;
