@@ -66,4 +66,3 @@ $(window).scroll(function () {
 
     }
 })
-

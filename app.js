@@ -21,7 +21,7 @@ app.set('view engine', 'ejs');
 // creating the session to store the data and also use for flash message;
 app.use(session({  //ya pr humm allow krte ha ki humm session use kr skte ha passport ka sath
   resave: false,
-  secret: 'user passport',
+  secret: 'kela',
   saveUninitialized: false,
 }));
 

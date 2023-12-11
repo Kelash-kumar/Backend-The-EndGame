@@ -3,8 +3,9 @@ var router = express.Router();
 const locatStrategy = require('passport-local');
 const passport = require('passport');
 const User = require('./users');
-const e = require('connect-flash');
-passport.use(new locatStrategy(User.authenticate));
+
+
+passport.use(new locatStrategy(User.authenticate()));
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -12,23 +13,24 @@ router.get('/', function(req, res, next) {
 });
 
 router.get('/profile',isLoggedIn,(req,res)=>{  //here is loggedin means ka app login hu ya nhi
-  res.send('welcome to my profile')
+res.render('profile')
 })
 // register route for the user
 
 router.get('/register',(req,res)=>{
   res.render('register',{title:'register page'});
-}); //
+}); 
+//
+ 
 
-
-router.post('/register',(req,res)=>{
+router.post('/register' ,(req,res)=>{
 User.register(new User({username:req.body.username}),req.body.password,(err,user)=>{
   if(err){
   console.log(err)
-  return res.render('register')
+  return res.render('error')
   }
   passport.authenticate('local')(req,res,()=>{
-    res.redirect('/');
+    res.redirect('/profile');
   });
 });
 });
@@ -36,8 +38,8 @@ User.register(new User({username:req.body.username}),req.body.password,(err,user
 
 // Login route for the user
 router.post('/login',passport.authenticate('local',{
-   successRedirect:'/',
-  failureRedirect:'/login',
+   successRedirect:'/profile',
+  failureRedirect:'/register',
 }),(req,res)=>{});
 
 // logout route for the user
