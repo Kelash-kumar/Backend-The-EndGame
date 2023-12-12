@@ -669,7 +669,7 @@ app.use(flash());
      const successMessage = req.flash('success');
      ```
    ## USAGE:
-     ``` javascript
+     ```javascript
    import express from 'express';
    import session from 'express-session';
    import flash from 'express-flash-message'
@@ -720,6 +720,105 @@ app.use(flash());
       app.get('/', (req, res) => {
         res.flash('success', '-----info----');
         res.render('index');
+
+## Authentication in Express.js:
+Install required packages:
+Install the necessary packages for authentication using npm:
+```bash
+npm install express passport passport-local express-session
+```
+Set up Express with Passport:
+
+Create an Express application and configure Passport for local authentication:
+
+```javascript
+const express = require('express');
+const passport = require('passport');
+const LocalStrategy = require('passport-local').Strategy;
+const session = require('express-session');
+
+const app = express();
+
+// Configure Passport
+passport.use(new LocalStrategy(
+  (username, password, done) => {
+    // Implement your user authentication logic here
+    // Example: Check if the username and password are valid
+    if (username === 'user' && password === 'password') {
+      return done(null, { id: 1, username: 'user' });
+    } else {
+      return done(null, false, { message: 'Invalid credentials' });
+    }
+  }
+));
+
+passport.serializeUser((user, done) => {
+  done(null, user.id);
+});
+
+passport.deserializeUser((id, done) => {
+  // Retrieve user by id
+  done(null, { id: 1, username: 'user' });
+});
+
+// Use session for tracking authentication state
+app.use(session({ secret: 'your-secret-key', resave: false, saveUninitialized: false }));
+app.use(passport.initialize());
+app.use(passport.session());
+Set up routes for login and protected resource:
+```
+```javascript
+
+// Login route
+app.post('/login',
+  passport.authenticate('local', {
+    successRedirect: '/dashboard',
+    failureRedirect: '/login',
+    failureFlash: true,
+  })
+);
+
+// Logout route
+app.get('/logout', (req, res) => {
+  req.logout();
+  res.redirect('/');
+});
+
+// Protected route
+app.get('/dashboard', isAuthenticated, (req, res) => {
+  res.send('Welcome to the dashboard!');
+});
+
+// Middleware to check authentication
+function isAuthenticated(req, res, next) {
+  if (req.isAuthenticated()) {
+    return next();
+  }
+  res.redirect('/login');
+}
+```
+### Authorization in Express.js:
+Define user roles:
+Assign roles to your users. For simplicity, let's consider 'admin' and 'user' roles.
+Extend the authentication middleware with authorization:
+
+```javascript
+
+// Middleware to check role-based authorization
+function isAuthorized(role) {
+  return (req, res, next) => {
+    if (req.isAuthenticated() && req.user.role === role) {
+      return next();
+    }
+    res.status(403).send('Forbidden');
+  };
+}
+
+// Protected admin route
+app.get('/admin', isAuthenticated, isAuthorized('admin'), (req, res) => {
+  res.send('Welcome to the admin panel!');
+});
+     
      });
        
         app.listen('5000', () => {
